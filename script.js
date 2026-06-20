@@ -2,7 +2,7 @@
  * Match & Move Carousel Logic + Clamped Navigation
  */
 
-const TOTAL_NODES = 7;
+const TOTAL_NODES = 9;
 const STEP_ANGLE = 360 / TOTAL_NODES;
 const FOCUS_ANGLE = 270; // 9 o'clock position
 
@@ -11,20 +11,24 @@ const slideData = [
   { imgThumb: "assets/slide1.jpg", imgHighRes: "assets/slide1.jpg", title: "Presentación", themePrimary: "#ef4444", themeSecondary: "#b91c1c" },
   { imgThumb: "assets/slide2.jpg", imgHighRes: "assets/slide2.jpg", title: "Introducción", themePrimary: "#facc15", themeSecondary: "#ca8a04" },
   { imgThumb: "assets/org_general.png", imgHighRes: "assets/org_general.png", title: "Organigrama", themePrimary: "#3b82f6", themeSecondary: "#1d4ed8" },
-  { imgThumb: "assets/slide3.jpg", imgHighRes: "assets/slide3.jpg", title: "Metodología", themePrimary: "#4ade80", themeSecondary: "#16a34a" },
-  { imgThumb: "assets/slide4.jpg", imgHighRes: "assets/slide4.jpg", title: "El Proyecto", themePrimary: "#c084fc", themeSecondary: "#9333ea" },
+  { imgThumb: "assets/slide2.jpg", imgHighRes: "assets/slide2.jpg", title: "Objetivos", themePrimary: "#a855f7", themeSecondary: "#7e22ce" },
+  { imgThumb: "assets/slide3.jpg", imgHighRes: "assets/slide3.jpg", title: "Tecnologías", themePrimary: "#4ade80", themeSecondary: "#16a34a" },
+  { imgThumb: "assets/slide4.jpg", imgHighRes: "assets/slide4.jpg", title: "Scrum", themePrimary: "#fb923c", themeSecondary: "#ea580c" },
   { imgThumb: "assets/slide5.jpg", imgHighRes: "assets/slide5.jpg", title: "Resultados", themePrimary: "#38bdf8", themeSecondary: "#0284c7" },
-  { imgThumb: "assets/slide6.jpg", imgHighRes: "assets/slide6.jpg", title: "Experiencia", themePrimary: "#fb923c", themeSecondary: "#ea580c" },
+  { imgThumb: "assets/slide6.jpg", imgHighRes: "assets/slide6.jpg", title: "Conclusiones", themePrimary: "#ec4899", themeSecondary: "#be185d" },
+  { imgThumb: "assets/anecdota.png", imgHighRes: "assets/anecdota.png", title: "Anécdota", themePrimary: "#14b8a6", themeSecondary: "#0f766e" },
 ];
 
 const SVG_ICONS = [
   '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>',
-  '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>',
+  '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>',
   '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="1" width="6" height="4" rx="1"/><rect x="1" y="19" width="6" height="4" rx="1"/><rect x="9" y="19" width="6" height="4" rx="1"/><rect x="17" y="19" width="6" height="4" rx="1"/><path d="M12 5v8M4 13h16v6M12 13v6"/></svg>',
-  '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>',
-  '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>',
+  '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>',
+  '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>',
+  '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>',
+  '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>',
   '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>',
-  '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>',
+  '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
 ];
 
 // DOM Elements
