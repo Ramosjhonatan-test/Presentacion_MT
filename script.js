@@ -8,12 +8,12 @@ const FOCUS_ANGLE = 270; // 9 o'clock position
 
 // Slide Data
 const slideData = [
-  { imgThumb: "assets/slide1.jpg", imgHighRes: "assets/slide1.jpg", title: "Presentación", themePrimary: "#38bdf8", themeSecondary: "#818cf8" },
-  { imgThumb: "assets/slide2.jpg", imgHighRes: "assets/slide2.jpg", title: "Introducción", themePrimary: "#f472b6", themeSecondary: "#fb7185" },
-  { imgThumb: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1920&auto=format&fit=crop", imgHighRes: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1920&auto=format&fit=crop", title: "Metodología", themePrimary: "#34d399", themeSecondary: "#10b981" },
-  { imgThumb: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1920&auto=format&fit=crop", imgHighRes: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1920&auto=format&fit=crop", title: "El Proyecto", themePrimary: "#fbbf24", themeSecondary: "#f59e0b" },
-  { imgThumb: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1920&auto=format&fit=crop", imgHighRes: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1920&auto=format&fit=crop", title: "Resultados", themePrimary: "#2dd4bf", themeSecondary: "#0ea5e9" },
-  { imgThumb: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1920&auto=format&fit=crop", imgHighRes: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1920&auto=format&fit=crop", title: "Experiencia", themePrimary: "#a78bfa", themeSecondary: "#8b5cf6" },
+  { imgThumb: "assets/slide1.jpg", imgHighRes: "assets/slide1.jpg", title: "Presentación", themePrimary: "#ef4444", themeSecondary: "#b91c1c" },
+  { imgThumb: "assets/slide2.jpg", imgHighRes: "assets/slide2.jpg", title: "Introducción", themePrimary: "#facc15", themeSecondary: "#ca8a04" },
+  { imgThumb: "assets/slide3.jpg", imgHighRes: "assets/slide3.jpg", title: "Metodología", themePrimary: "#4ade80", themeSecondary: "#16a34a" },
+  { imgThumb: "assets/slide4.jpg", imgHighRes: "assets/slide4.jpg", title: "El Proyecto", themePrimary: "#c084fc", themeSecondary: "#9333ea" },
+  { imgThumb: "assets/slide5.jpg", imgHighRes: "assets/slide5.jpg", title: "Resultados", themePrimary: "#38bdf8", themeSecondary: "#0284c7" },
+  { imgThumb: "assets/slide6.jpg", imgHighRes: "assets/slide6.jpg", title: "Experiencia", themePrimary: "#fb923c", themeSecondary: "#ea580c" },
 ];
 
 const SVG_ICONS = [
